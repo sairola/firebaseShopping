@@ -1,5 +1,6 @@
 import { async } from '@firebase/util';
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect, useContext} from 'react'
+import { AppContext } from '../App';
 import { addNewTask, getTask, updateTask, deleteTask } from '../firebase/taskController';
 
 const task = {
@@ -16,6 +17,8 @@ const [task, setTask] = useState( { title: "", description:"" });
 const [tasks, setTasks] = useState([]);
 
 const [mode, setMode] = useState("add");
+
+const {user} = useContext(AppContext);
 
 const createNewTask = async () => {
   console.log(task)
@@ -66,6 +69,7 @@ initializeTasks()
           
           <input type="text" value={task.title}
           placeholder="Titulo"
+          disabled={!user}
           className='border outline-none focus:ring ring-sky-200 rounded px-2 py-1 w-full'
           onChange={(e) => setTask({...task, title: e.target.value})}> 
           </input>
@@ -73,13 +77,15 @@ initializeTasks()
           <textarea 
           type="text" value={task.description}
           rows={3}
+          disabled={!user}
           placeholder="Descripción de la tarea"
           className='border outline-none focus:ring ring-sky-200 rounded px-2 py-1 w-full'
           onChange={(e) => setTask({...task, description: e.target.value})}> 
           </textarea>
 
           <button className='bg-sky-400 text-white rounded shadow py-1
-           hover:bg-sky-600 transition font-semibold'
+           hover:bg-sky-600 transition font-semibold disabled:bg-sky-150'
+           disabled={!user}
            onClick={() => mode === "add" ? createNewTask() : updateExistingTask()}> 
            
            {mode === "add" ? "Añadir" : "Actualizar"} </button>
@@ -113,6 +119,12 @@ onClick= { () => window.confirm("Seguro que deseas eliminar la tarea") && delete
 )   
 )}
 </div>
+
+
+{!user && <p className='text-red-600'>Necesitas estar logueado para poder leer y modificar las tareas</p>}
+
+
+
    </div>
   )
 }

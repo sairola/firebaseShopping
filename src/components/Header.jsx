@@ -27,7 +27,7 @@ const logOut = () => {
     <header className='h-20 w-full bg-gray-100 shadow-lg flex items-center justify-between px-8'>
   <div className='flex items-center gap-2 cursor-pointer' onClick={()=> setRoute('home')}>
  <SiFirebase className='text-2xl text-pink-600'></SiFirebase>
- <span className='text-xl font-semibold text-pink-600'>FireShopping v1.2.1</span>
+ <span className='text-xl font-semibold text-pink-600'>FireShopping v1.2.2</span>
   </div>
   
   <div className='flex gap-2'>
