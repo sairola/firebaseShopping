@@ -1,6 +1,8 @@
+App realizada con React Js. Autenticación de users con Firebase, Notificaciones Push, base de dato no relacional con firestore, hosting Firebase. Despliegue en github
+
 # Getting Started with Create React App
 
-//Próxima versión. Incorporar la lista de productos al carrito. (FakeStore.API) e incorporar opciones (Settings, modo oscuro)
+//Próxima versión. Incorporar opciones (Settings, modo oscuro)
 
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
